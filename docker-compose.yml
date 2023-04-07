@@ -1,0 +1,22 @@
+services:
+  nginx:
+    image: test-nginx
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - web
+      - api
+  
+  web:
+    image: test
+    container_name: web
+    entrypoint: ["poetry", "run", "gunicorn", "-c", "./gunicorn.conf.py"]
+
+  api:
+    image: test
+    container_name: api
+    entrypoint: ["poetry", "run", "uvicorn", "api.main:app", "--host", "0.0.0.0"]
+    
