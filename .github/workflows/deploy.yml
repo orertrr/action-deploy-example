@@ -19,6 +19,6 @@ jobs:
 
       - name: Deploy to EC2
         env: 
-          AWS_INSTANCE_ID: ${{ AWS_INSTANCE_ID }}
+          AWS_INSTANCE_ID: ${{ secrets.AWS_INSTANCE_ID }}
         run: |
           mssh ubuntu@$AWS_INSTANCE_ID "pwd"
