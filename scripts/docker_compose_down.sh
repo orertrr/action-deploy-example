@@ -2,4 +2,4 @@
 
 set -e
 
-sudo docker compose down
+sudo docker compose --project-directory /app down

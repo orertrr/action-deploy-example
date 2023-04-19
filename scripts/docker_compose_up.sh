@@ -2,4 +2,4 @@
 
 set -e
 
-sudo docker compose up -d
+sudo docker compose --project-directory /app up -d
