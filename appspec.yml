@@ -1,9 +1,9 @@
 version: 0.0
 os: linux
-file:
+files:
   - source: /
     destination: /app
-hook:
+hooks:
   BeforeInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
