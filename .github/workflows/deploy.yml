@@ -17,15 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install EC2 Connect CLI
-        run: |
-          pip install ec2instanceconnectcli
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -34,9 +25,10 @@ jobs:
 
       - name: Deploy to EC2
         env:
-          APP_NAME: ${{ env.APP_NAME }}
-          GROUP_NAME: ${{ env.GROUP_NAME }}
-        run: aws deploy create-deployment \
+          APP_NAME: ${{ vars.APP_NAME }}
+          GROUP_NAME: ${{ vars.GROUP_NAME }}
+        run: |
+          aws deploy create-deployment \
           --application-name $APP_NAME \
           --deployment-config-name CodeDeployDefault.OneAtATime \
           --deployment-group-name $GROUP_NAME \
