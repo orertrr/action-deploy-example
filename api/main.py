@@ -11,4 +11,4 @@ async def index():
 @app.get('/checkpath')
 async def get_path(request: Request):
     '''Get path'''
-    return f'{request.scope.get("root_path")}'
+    return f'{request.scope.get("root_path")}
